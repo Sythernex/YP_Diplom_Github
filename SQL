@@ -1,12 +1,9 @@
 Задание 1
 
-SELECT co.login,
-       COUNT(os."courierId") AS in_delivery
-FROM "Orders" AS os
-JOIN "Couriers" AS co
-    ON co.id = os."courierId"
-WHERE os."inDelivery" = true
-GROUP BY co.login;
+SELECT c.login, COUNT(o."orderId") AS "order amount"
+FROM "Couriers" AS c
+LEFT JOIN "Orders" AS o ON c.id = o."courierId" AND o."inDelivery" = 'true'
+GROUP BY c.login;
 
 
 Задание 2
